@@ -14,23 +14,29 @@ var DocumentView = React.createClass({
     var document       = this.props.document;
     var thumbnailUrl   = document['media:thumbnail']['0']['$']['url'];
     var pinButtonText  = document.pinned ? "Unpin" : "Pin";
-    var pinButtonClass = cx({
-      'toggle-pin': true,
-      'pinned': document.pinned
+    var cardClass = cx({
+      'card': true,
+      'card--pinned': document.pinned
     });
 
     return (
-      <div className="document">
-        <img src={thumbnailUrl}></img>
-        <p>{document.title}</p>
+      <div className={cardClass}>
 
-        <button className="destroy" onClick={this._onDestroyClick}>
-          Destroy
-        </button>
+        <div className="card-thumbnail">
+          <img src={thumbnailUrl}></img>
+        </div>
 
-        <button className={pinButtonClass} onClick={this._onTogglePinClick}>
-          {pinButtonText}
-        </button>
+        <div className="card-content">
+          <p>{document.title}</p>
+
+          <button className="destroy" onClick={this._onDestroyClick}>
+            Destroy
+          </button>
+
+          <button className="toggle-pin" onClick={this._onTogglePinClick}>
+            {pinButtonText}
+          </button>
+        </div>
 
       </div>
     );

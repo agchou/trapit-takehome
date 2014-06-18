@@ -1,21 +1,36 @@
-#MainSection {
-    width: 960px;
-    margin: auto;
+.container {
+  width: 960px;
+  margin: auto;
 }
 
-.document {
+.card {
   display: inline-block;
   background-color: lightgrey;
   height: 320px;
-  max-height: 320px;
+  width: 300px;
   padding: 5px;
   margin: 5px;
+  overflow: hidden;
 }
 
-.document img {
-  height: 220px;
-  width: 220px;
+.card-thumbnail {
   overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+.card-thumbnail img {
+  min-height: 100%;
+}
+
+.card-content {
+  position: relative;
+  top: -340px;
+  width: 100%;
+}
+
+.card--pinned {
+  background-color: red;
 }
 
 .spinner {

@@ -13,19 +13,18 @@ var MainSection = React.createClass({
   render: function () {
     var allDocuments = this.props.allDocuments;
     var documents = [];
-    var method;
     var document;
+    var method;
     var content;
 
     if (Object.keys(allDocuments).length) {
-      content = <div id="document-list">{documents}</div>
-
       for (var id in allDocuments) {
         document = allDocuments[id];
-        method   = document.pinned ? 'unshift' : 'push';
-
-        documents[method](<DocumentItem document={allDocuments[id]} />);
+        method = document.pinned ? 'unshift' : 'push';
+        documents[method](<DocumentItem document={document} />);
       }
+
+      content = <div id="document-list">{documents}</div>
     } else {
       content = <Spinner />;
     }
