@@ -1,0 +1,33 @@
+{
+  "name": "trapit-takehome",
+  "version": "0.0.1",
+  "description": "take home assignment for TrapIt",
+  "main": "js/app.js",
+  "author": "Aaron Chou <aarongchou@gmail.com> (http://agchou.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^0.10.0",
+    "es6-promise": "^1.0.0",
+    "xml2js": "^0.4.4",
+    "superagent": "^0.18.0"
+  },
+  "devDependencies": {
+    "envify": "^1.2.1",
+    "watchify": "^0.10.2",
+    "browserify": "^4.1.10",
+    "reactify": "^0.13.1",
+    "uglify-js": "^2.4.14",
+    "statics": "^0.1.0"
+  },
+  "scripts": {
+    "start": "STATIC_ROOT=./static watchify js/app.js -o js/bundle.js -v -d .",
+    "build": "STATIC_ROOT=./static browserify js/app.js | uglifyjs -cm > js/bundle.min.js",
+    "build-dev": "STATIC_ROOT=./static browserify js/app.js -o js/bundle.js"
+  },
+  "browserify": {
+    "transform": [
+      "envify",
+      "reactify"
+    ]
+  }
+}
