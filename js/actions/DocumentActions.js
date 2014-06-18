@@ -7,19 +7,15 @@ var DocumentActions = {
    * @param  {object} document
    */
   togglePin: function (document) {
-    var id = document.id;
+    var id     = document.id;
+    var status = document.pinned
+      ? 'DOCUMENT_UNPIN'
+      : 'DOCUMENT_PIN';
 
-    if (!document.pinned) {
-      AppDispatcher.handleViewAction({
-        actionType: DocumentConstants.DOCUMENT_PIN,
-        id: id
-      });
-    } else {
-      AppDispatcher.handleViewAction({
-        actionType: DocumentConstants.DOCUMENT_UNPIN,
-        id: id
-      });
-    }
+    AppDispatcher.handleViewAction({
+      actionType: DocumentConstants[status],
+      id: id
+    });
   },
 
   /**
