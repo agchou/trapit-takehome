@@ -11,13 +11,20 @@ var Spinner      = require('./Spinner.react');
 var MainSection = React.createClass({
 
   render: function () {
-    if (!Object.keys(this.props.allDocuments).length) return <Spinner />;
-
     var allDocuments = this.props.allDocuments;
     var documents = [];
+    var method;
+    var document;
+
+    if (!Object.keys(allDocuments).length) return <Spinner />;
 
     for (var id in allDocuments) {
-      documents.push(<DocumentItem document={allDocuments[id]} />);
+      document = allDocuments[id];
+
+      method = document.pinned ? 'unshift' : 'push';
+      console.log(method);
+
+      documents[method](<DocumentItem document={allDocuments[id]} />);
     }
 
     return (
