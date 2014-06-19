@@ -8,7 +8,7 @@ var ReactPropTypes = React.PropTypes;
 var DocumentItem = require('./DocumentItem.react');
 var Spinner      = require('./Spinner.react');
 
-var MainSection = React.createClass({
+var DocumentList = React.createClass({
 
   render: function () {
     var allDocuments = this.props.allDocuments;
@@ -30,8 +30,8 @@ var MainSection = React.createClass({
     }
 
     return (
-      <div id="MainSection">
-        <h1>This is the MainSection</h1>
+      <div id="document-list">
+        <h1>This is the DocumentList</h1>
         {content}
       </div>
     );
@@ -39,4 +39,4 @@ var MainSection = React.createClass({
 
 });
 
-module.exports = MainSection;
+module.exports = DocumentList;

@@ -5,7 +5,7 @@
 var React         = require('react');
 var DocumentStore = require('../stores/DocumentStore');
 
-var MainSection   = require('./MainSection.react');
+var DocumentList   = require('./DocumentList.react');
 
 function getDocumentState() {
   return {
@@ -35,7 +35,7 @@ var DocumentApp = React.createClass({
     return (
       <div className="container">
         hello
-        <MainSection
+        <DocumentList
           allDocuments={this.state.allDocuments}
         />
       </div>
