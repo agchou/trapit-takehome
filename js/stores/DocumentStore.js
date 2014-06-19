@@ -6,7 +6,7 @@ var request           = require('superagent');
 var parseString       = require('xml2js').parseString;
 
 var CHANGE_EVENT = 'change';
-var BASE_URL = 'http://curate.trap.it/api/v4/tc/traps/2c76c05e75814865b4a8c67052b5d0f3/atom/';
+var BASE_URL     = 'http://curate.trap.it/api/v4/tc/traps/2c76c05e75814865b4a8c67052b5d0f3/atom/';
 
 var _documents = {};
 
@@ -25,16 +25,10 @@ function updateStore() {
     });
 }
 
-function pin(id) {
+function togglePin (id) {
   var document = _documents[id];
 
-  document.pinned = true;
-}
-
-function unpin(id) {
-  var document = _documents[id];
-
-  document.pinned = false;
+  document.pinned = !document.pinned;
 }
 
 function destroy(id) {
@@ -66,12 +60,8 @@ AppDispatcher.register(function (payload) {
 
   switch(action.actionType) {
 
-    case DocumentConstants.DOCUMENT_PIN:
-      pin(action.id);
-      break;
-
-    case DocumentConstants.DOCUMENT_UNPIN:
-      unpin(action.id);
+    case DocumentConstants.DOCUMENT_TOGGLE_PIN:
+      togglePin(action.id);
       break;
 
     case DocumentConstants.DOCUMENT_DESTROY:

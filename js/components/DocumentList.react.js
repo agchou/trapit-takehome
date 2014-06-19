@@ -12,7 +12,7 @@ var DocumentList = React.createClass({
 
   render: function () {
     var allDocuments = this.props.allDocuments;
-    var documents = [];
+    var documents    = [];
     var document;
     var method;
     var content;
@@ -20,7 +20,8 @@ var DocumentList = React.createClass({
     if (Object.keys(allDocuments).length) {
       for (var id in allDocuments) {
         document = allDocuments[id];
-        method = document.pinned ? 'unshift' : 'push';
+        method   = document.pinned ? 'unshift' : 'push';
+
         documents[method](<DocumentItem document={document} />);
       }
 

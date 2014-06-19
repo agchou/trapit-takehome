@@ -48,7 +48,7 @@ var DocumentView = React.createClass({
   },
 
   _onTogglePinClick: function () {
-    DocumentActions.togglePin(this.props.document)
+    DocumentActions.togglePin(this.props.document.id)
   }
 
 });
